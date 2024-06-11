@@ -213,6 +213,14 @@ public class MultiverseHotlineScript : MonoBehaviour
             {"SUPREME COURT OF THE GEESE", "SECRET CARPENTERS’ GUILD", "SYNDICATE OF CRIMINAL GUYS", "SACRED CHURCH OF GARY"},
             {"SUPER COMBUSTIBLE GADGETS", "SCHOOL OF CAT GYMNASTICS", "STAMP COLLECTORS OF GEORGIA", "SENATE OF CLASSY GENTLEMEN"}
         };
+        // A single line bugs if the 2D array is used and got no clue why
+        string[] tableMadness = new string[]
+        {
+            "STEEL CRATE GAMES", "STAINED CRYSTAL GLASSMAKERS", "SOCIETY OF CHEWING GUM", "SACRAMENTO COUNTY GAZETTE",
+            "STUPID CHEAP GROCERIES", "SEATTLE COAST GUARD", "SILK CLOAKS & GARMENTS", "SHANGHAI COLLEGE OF GEOLOGY",
+            "SUPREME COURT OF THE GEESE", "SECRET CARPENTERS’ GUILD", "SYNDICATE OF CRIMINAL GUYS", "SACRED CHURCH OF GARY",
+            "SUPER COMBUSTIBLE GADGETS", "SCHOOL OF CAT GYMNASTICS", "STAMP COLLECTORS OF GEORGIA", "SENATE OF CLASSY GENTLEMEN"
+        };
 
         int[] origCoords = BaseHelper.FindIndexIn2D(universeTable, uniData[originUniverse, 0]);
         int curRow = origCoords[0];
@@ -275,7 +283,7 @@ public class MultiverseHotlineScript : MonoBehaviour
             curDirIndex %= directions.Count();
         }
 
-        string targetUniName = universeTable[curRow, curCol];
+        string targetUniName = tableMadness[curRow * 4 + curCol];
         for (int i = 0; i < uniData.GetLength(0); i++)
             if (targetUniName == uniData[i, 0]) targetUniverse = i;
         Debug.LogFormat("[The Multiverse Hotline #{0}] After moving in the grid, the target universe is {1} and so the ID to dial is {2}.", _moduleId, targetUniName, uniData[targetUniverse, 1]);
